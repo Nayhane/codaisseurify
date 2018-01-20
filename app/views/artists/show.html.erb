@@ -2,3 +2,5 @@
   <strong>Artist</strong>
   <%= @artist.name %>
 </p>
+
+<%= link_to "Delete", artist_path(@artist.id), method: :delete, data: { confirm: "Are you sure?" } %>
