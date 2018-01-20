@@ -1,6 +1,17 @@
+<p id="notice"><%= notice %></p>
+
 <p>
   <strong>Artist</strong>
   <%= @artist.name %>
 </p>
 
-<%= link_to "Delete", artist_path(@artist.id), method: :delete, data: { confirm: "Are you sure?" } %>
+    <div class="panel panel-primary">
+    <div class="panel-heading">Musics</div>
+    <ul>
+      <% @artist.songs.each do |song| %>
+        <li><%= song.name %> &nbsp; <%= link_to("Delete", artist_song_path(@artist.id, song.id), method: :delete, data: { confirm: "Are you sure?" }) %></li>
+      <% end %>
+    </ul>
+
+<br><br>
+<%= link_to "Delete Artist", artist_path(@artist.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"%>
