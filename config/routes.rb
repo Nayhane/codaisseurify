@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root to: 'artists#index'
+  root to: 'pages#home'
+
+
 
     resources :artists, only: [:index, :show, :destroy]
 end
