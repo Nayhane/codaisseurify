@@ -1,5 +1,5 @@
 class ArtistsController < ApplicationController
-
+  before_action :load_artist, only: [:show, :destroy]
 
   def index
     @artists = Artist.all
@@ -25,4 +25,8 @@ private
     params.require(:artist).permit(:name)
   end
 
+
+  def load_artist
+    @artist = Artist.find(params[:id])
+  end
 end

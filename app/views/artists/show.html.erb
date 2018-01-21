@@ -5,13 +5,36 @@
   <%= @artist.name %>
 </p>
 
-    <div class="panel panel-primary">
-    <div class="panel-heading">Musics</div>
+<div class="panel panel-primary">
+  <div class="panel-heading">Musics</div>
+  <ul>
+    <% @artist.songs.each do |song| %>
+    <li><%= song.name %> &nbsp; <%= link_to("Delete", artist_song_path(@artist.id, song.id), method: :delete, data: { confirm: "Are you sure?" }) %></li>
+    <% end %>
+  </ul>
+
+  <p> Add a new Song</p>
+
+ <% if @artist.errors.present? %>
     <ul>
-      <% @artist.songs.each do |song| %>
-        <li><%= song.name %> &nbsp; <%= link_to("Delete", artist_song_path(@artist.id, song.id), method: :delete, data: { confirm: "Are you sure?" }) %></li>
+      <% @artist.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
       <% end %>
     </ul>
+<% end %>
 
-<br><br>
-<%= link_to "Delete Artist", artist_path(@artist.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"%>
+  <%= form_for [@artist, @artist.songs.new], html: { multipart:true } do |f| %>
+
+  <div class="form-group">
+    <label>Song name:</label>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save", class: "btn btn-primary" %>
+  </div>
+  <% end %>
+
+
+  <br><br>
+  <%= link_to "Delete Artist", artist_path(@artist.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"%>
