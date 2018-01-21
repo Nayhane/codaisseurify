@@ -1,10 +1,10 @@
 Artist.destroy_all
 
 # Artist
-adele = Artist.create!(name: "Adele")
-ed_sheeran = Artist.create!(name: "Ed Sheeran")
-coldplay = Artist.create!(name: "Coldplay")
-u_2 = Artist.create!(name: "U2")
+adele = Artist.create!(name: "Adele", remote_image_url:"http://res.cloudinary.com/nayhane/image/upload/v1516526483/adele1_qukxdr.jpg")
+ed_sheeran = Artist.create!(name: "Ed Sheeran", remote_image_url:"http://res.cloudinary.com/nayhane/image/upload/v1516526505/ed_sheeran1_f3ried.jpg")
+coldplay = Artist.create!(name: "Coldplay", remote_image_url: "http://res.cloudinary.com/nayhane/image/upload/v1516526492/coldplay1_l0ytid.gif")
+u_2 = Artist.create!(name: "U2", remote_image_url: "http://res.cloudinary.com/nayhane/image/upload/v1516526499/U21_ldccjs.jpg")
 
 # Songs:
 # Adele
