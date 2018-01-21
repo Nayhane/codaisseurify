@@ -1,5 +1,17 @@
-<h1> Artists </h1>
+<div id="background" class="jumbotron">
+  <div class="container">
+    <h1>Artist</h1>
+  </div>
+</div>
 
-<% @artists.each do |artist| %>
-<p><%= link_to artist.name, artist_path(artist.id) %></p>
-<% end %>
+<div class="row">
+  <div class="container">
+    <div  class="panel-body panel_artists">
+      <% @artists.each do |artist| %>
+      <div  id="artist-name" class="col-md-12">
+        <p><%= link_to artist.name, artist_path(artist.id) %></p>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

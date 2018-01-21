@@ -32,6 +32,12 @@ gem 'bootstrap-sass'
 
 # Use jQuery for easier javascript
 gem 'jquery-rails'
+
+gem 'carrierwave', '0.11.2'
+
+gem 'cloudinary', '1.2.3'
+
+gem 'font-awesome-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -61,5 +67,3 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'rails_12factor', group: :production
-gem 'carrierwave', '0.11.2'
-gem 'cloudinary', '1.2.3'

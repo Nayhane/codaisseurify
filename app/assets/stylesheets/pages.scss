@@ -1,3 +1,42 @@
-// Place all the styles related to the Pages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#background{
+  background-image: url("https://img.huffingtonpost.com/asset/57b36e811800001800bcb291.jpg?ops=1910_1000");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0px -70px;
+  color: white;
+}
+
+
+footer{
+ background-color: #f5f5f5;
+ text-align: center;
+ padding-top: 30px;
+ padding-bottom: 30px;
+ color: #777;
+}
+
+.panel_artists {
+  border: 1px solid #777;
+}
+#artist-name p {
+  font-size: 25px;
+  font-family: serif;
+}
+
+#image p{
+  font-size: 20px;
+  font-family: serif;
+}
+
+#musics{
+  background-color: #f5f5f5;
+  color: black;
+  font-size: 20px;
+  font-family: serif;
+}
+
+ul{
+  font-size: 20px;
+  font-family: serif;
+}

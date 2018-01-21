@@ -1,29 +1,26 @@
 <p id="notice"><%= notice %></p>
 
+<div id="image"class="container">
 <p>
-  <strong>Artist</strong>
+  <strong>Artist:</strong>
   <%= @artist.name %>
 </p>
+
  <%= image_tag @artist.image.thumbnail%>
 
+</div>
+<br>
+<div class="panel panel col-md-12">
+  <div id="musics" onloadedmetadata=""class="panel-heading">Musics</div>
 
-<div class="panel panel-primary">
-  <div class="panel-heading">Musics</div>
   <ul>
     <% @artist.songs.each do |song| %>
     <li><%= song.name %> &nbsp; <%= link_to("Delete", artist_song_path(@artist.id, song.id), method: :delete, data: { confirm: "Are you sure?" }) %></li>
     <% end %>
   </ul>
-
+<br><br>
   <p> Add a new Song</p>
 
- <% if @artist.errors.present? %>
-    <ul>
-      <% @artist.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-      <% end %>
-    </ul>
-<% end %>
 
   <%= form_for [@artist, @artist.songs.new], html: { multipart:true } do |f| %>
 
