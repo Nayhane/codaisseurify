@@ -1,5 +1,5 @@
 Artist.destroy_all
-
+Song.destroy_all
 # Artist
 adele = Artist.create!(name: "Adele", remote_image_url:"http://res.cloudinary.com/nayhane/image/upload/v1516526483/adele1_qukxdr.jpg")
 ed_sheeran = Artist.create!(name: "Ed Sheeran", remote_image_url:"http://res.cloudinary.com/nayhane/image/upload/v1516526505/ed_sheeran1_f3ried.jpg")
