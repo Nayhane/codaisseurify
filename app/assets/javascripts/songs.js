@@ -5,9 +5,15 @@ function submitSong(event) {
   $("#song_name").val(null);
 }
 
-function createSong(name, artist_id){
 
-  let newSong = {name: name};
+function nextSongId() {
+  return $(".song").length + 1;
+}
+
+
+function createSong(name, artist_id){
+    let newSong = {name: name}
+
 
   $.ajax({
     type: "POST",
@@ -17,8 +23,41 @@ function createSong(name, artist_id){
     }),
     contentType: "application/json",
     dataType: "json"
-  });
+  })
+  .done(function(data) {
+    console.log(data);
+
+
+    let songId = data.id;
+
+
+    let listItem = $('<li></li>')
+    .attr('id', songId)
+    .html(name);
+
+    let button = document.createElement("button");
+     button.innerHTML = "Delete";
+
+
+    let tableRow = $('<tr class="form-control"></td>')
+    .attr('data-id', songId)
+    .append($('<td>').append(listItem))
+    .append(button);
+
+    $("#song_list").append(tableRow);
+
+
+  })
+
+  .fail(function(error) {
+  console.log(error)
+  error_message = error.responseJSON.name[0];
+  showError(error_message);
+});
+
 }
+
+
 
 
 $(document).ready(function() {
