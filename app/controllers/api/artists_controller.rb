@@ -1,5 +1,4 @@
-class Api::ArtistsController < ApplicationController
-  skip_before_action :verify_authenticity_token
+class Api::ArtistsController < Api::BaseController
 
   def index
     artist = Artist.all
