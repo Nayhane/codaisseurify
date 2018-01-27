@@ -49,10 +49,10 @@ function createSong(name, artist_id){
 }
 
 
-function destroySong(event) {
-  event.preventDefault();
-  $.when($("click").remove())}
-// }
+// function destroySong(event) {
+//   event.preventDefault();
+//   $.when($("click").remove())
+// // }
 // function deleteSong(event) {
 //   event.preventDefault();
 //
