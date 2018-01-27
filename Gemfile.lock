@@ -70,13 +70,14 @@ GEM
       json (>= 1.7)
       mime-types (>= 1.16)
       mimemagic (>= 0.3.0)
-
+    case_transform (0.2)
+      activesupport
     childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
     chromedriver-helper (1.1.0)
       archive-zip (~> 0.7.0)
+      case_transform (= 0.2)
       nokogiri (~> 1.6)
-
     cloudinary (1.2.3)
       aws_cf_signer
       rest-client
@@ -258,7 +259,7 @@ DEPENDENCIES
   active_model_serializers (~> 0.10.0)
   bootstrap-sass
   byebug
-  capybara
+  capybara (~> 2.9)
   carrierwave (= 0.11.2)
   chromedriver-helper
   cloudinary (= 1.2.3)
@@ -274,7 +275,7 @@ DEPENDENCIES
   puma (~> 3.7)
   rails (~> 5.1.4)
   rails_12factor
-  rspec-rails
+  rspec-rails (~> 3.5)
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
