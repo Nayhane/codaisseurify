@@ -10,7 +10,7 @@ class SongsController < ApplicationController
     @song = @artist.songs.new(song_params)
 
     if @song.save
-      redirect_to @artist.find(params[:id]), notice: "Added Song"
+      redirect_to @artist, notice: "Added Song"
     else
       render :create
     end
@@ -20,7 +20,7 @@ class SongsController < ApplicationController
     @song = Song.find(params[:id])
     @song.destroy
 
-    redirect_to artists_path
+    redirect_to @artist
   end
 
 
