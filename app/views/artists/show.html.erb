@@ -13,12 +13,15 @@
 <div class="panel panel col-md-12">
   <div id="musics" onloadedmetadata=""class="panel-heading">Musics</div>
 
-<div id="song_list">
-  <ul>
+<div>
+  <ul id="song_list">
     <% @artist.songs.each do |song| %>
-    <li><%= song.name %> &nbsp; <%= link_to("Delete", artist_song_path(@artist.id, song.id), method: :delete, data: { confirm: "Are you sure?" }) %></li>
+
+    <li><%= song.name %> &nbsp;
+      <button id="button" onClick="destroySong(); return false">Delete</button>
+      <!-- <%= link_to("Delete", artist_song_path(@artist.id, song.id), method: :delete, data: { confirm: "Are you sure?" }) %></li> -->
     <% end %>
-  </ul>
+  id
 </div>
 
 <br><br>

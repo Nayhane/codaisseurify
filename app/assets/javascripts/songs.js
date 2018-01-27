@@ -6,11 +6,6 @@ function submitSong(event) {
 }
 
 
-function nextSongId() {
-  return $(".song").length + 1;
-}
-
-
 function createSong(name, artist_id){
     let newSong = {name: name}
 
@@ -30,21 +25,17 @@ function createSong(name, artist_id){
 
     let songId = data.id;
 
+    let button = $('#button').on('click', '#btn_a', function(){
+     console.log(this.value);
+ });
 
-    let listItem = $('<li></li>')
+
+    let listItem = $('<li class="song_list"></li>')
     .attr('id', songId)
     .html(name);
 
-    let button = document.createElement("button");
-     button.innerHTML = "Delete";
 
-
-    let tableRow = $('<tr class="form-control"></td>')
-    .attr('data-id', songId)
-    .append($('<td>').append(listItem))
-    .append(button);
-
-    $("#song_list").append(tableRow);
+    $("#song_list").append(listItem).append(button);
 
 
   })
@@ -58,9 +49,33 @@ function createSong(name, artist_id){
 }
 
 
+// function destroySong(event) {
+//   event.preventDefault();
+//   $.when($("click").remove())
+// // }
+// function deleteSong(event) {
+//   event.preventDefault();
+//
+//   let deleteItems = document.getElementById('delete');
+// }
+//
+// function destroySong(songId){
+//   $.ajax({
+//     type: "DELETE",
+//     url: "/api/artists/" + artist_id + "/songs.json",
+//     contentType: "application/json",
+//     dataType: "json"
+//   })
+//
+//   .done(function(data) {
+//     $('tr[data-id="' + songId +'"]').remove();
+//   });
+// }
+
 
 
 $(document).ready(function() {
     $("form").bind('submit', submitSong);
+    $("#delete").bind('click', destroySong);
 
 });
