@@ -13,11 +13,14 @@
 <div class="panel panel col-md-12">
   <div id="musics" onloadedmetadata=""class="panel-heading">Musics</div>
 
+<div id="song_list">
   <ul>
     <% @artist.songs.each do |song| %>
     <li><%= song.name %> &nbsp; <%= link_to("Delete", artist_song_path(@artist.id, song.id), method: :delete, data: { confirm: "Are you sure?" }) %></li>
     <% end %>
   </ul>
+</div>
+
 <br><br>
   <p> Add a new Song</p>
 
