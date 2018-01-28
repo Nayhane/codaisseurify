@@ -7,6 +7,7 @@ function submitSong(event) {
 
 function createSong(name, artist_id){
 
+  let artistId = $("#song_artist_id").val();
   let newSong = {name: name};
 
   $.ajax({
@@ -19,69 +20,84 @@ function createSong(name, artist_id){
     dataType: "json"
   })
 
-.done(function(data){
-  console.log(data);
+  .done(function(data){
+    $("#song_id").val(null);
 
-  let songId = data.id;
-
-  let button = $('#button').on('click', '#btn_a', function(){
-    console.log(this.value);
- });
-
-  let listItem = $('<li class="song_list"></li>')
-  .attr('id', songId)
-  .html(name)
+    let songId = data.id;
 
 
-  $("#song_list").append(listItem).append(button);
+    let button = $('<button type="button"></button>')
+    .attr('value', songId)
+    .attr('id', songId)
+    .bind("click", deleteSong)
+    .html('Delete');
 
 
-})
-.fail(function(error) {
+    let listItem = $('<li class="song_list"></li>')
+    .attr('id', songId)
+    .html(name)
+
+    listItem.append(button);
+    $("#song_list").append(listItem);
+
+
+  })
+  .fail(function(error) {
     console.log(error)
-    error_message = error.responseJSON.title[0];
+    error_message = error.responseJSON.name[0];
     showError(error_message);
   });
 }
 
 
-function destroySong(event){
+
+function deleteAll(){
   event.preventDefault();
-  deleteSong($("#button"));
 
+  let artist_id = $("#song_artist_id").val();
+  let song_id = $(this).val();
+  let songId = $(this).val();
 
-.done(function(data){
-    console.log(data);
+  $.when($('.delete_all').remove())
+  .then(deleteSong(songId));
 
-let songId = data.id;
+  $.ajax({
+    type: "DELETE",
+    url: "/api/artists/" + artist_id + "/songs/" + song_id + ".json",
+    contentType: "application/json",
+    dataType: "json"
+  })
 
-let deleteBtn = $('<button></button>')
-.attr('id', songId)
-.val('id_song')
-.bind('click', deleteSong)
-.html('Delete')
+  .done(function(data){
+    $('li[data-id="'+songId+'"]').remove();
 
-
-function(index, deleteBtn){
-  SongId = $(listItem).data('id');
-  deleteSong(songId);
-});
-
- $.ajax({
-   type: "DELETE",
-   url: "/api/artists/" + artist_id + "/songs/" + song_id + ".json",
-   data: JSON.stringify({
-     song: newSong
-   }),
-   contentType: "application/json",
-   dataType: "json"
-
- })
+  });
 }
 
+function deleteSong(){
+  event.preventDefault();
+
+  alert('passei');
+  let artist_id = $("#song_artist_id").val();
+  let song_id = $(this).val();
+  let songId = $(this).val();
+
+  $.ajax({
+    type: "DELETE",
+    url: "/api/artists/" + artist_id + "/songs/" + song_id + ".json",
+    contentType: "application/json",
+    dataType: "json"
+  })
+
+  .done(function(data){
+    $('li[data-id="'+songId+'"]').remove();
+
+  });
+}
 
 
 $(document).ready(function() {
   $("form").bind('submit', submitSong);
-  $("#button").bind('onclick', destroySong);
+  $(".delete").bind('onclick', deleteSong);
+  // $("#button").bind('onclick', destroySong);
 });
