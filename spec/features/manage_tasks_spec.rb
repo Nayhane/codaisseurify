@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Manage tasks', js: true do
   before(:each) do
-    visit ("http://localhost:3000/artists/19")
+    visit ("http://localhost:3000/artists/6")
     fill_in 'song_name', with: 'blue '
     page.execute_script("$('form').submit()")
   end
@@ -13,7 +13,7 @@ feature 'Manage tasks', js: true do
 
 
   scenario 'delete' do
-    visit ("http://localhost:3000/artists/19")
+    visit ("http://localhost:3000/artists/6")
     fill_in 'song_name', with:'red is black'
     page.execute_script("$('form').submit()")
     click_link('Delete')
@@ -23,7 +23,7 @@ feature 'Manage tasks', js: true do
 
 
   scenario 'delete all songs' do
-    visit ("http://localhost:3000/artists/19")
+    visit ("http://localhost:3000/artists/6")
     fill_in 'song_name', with:'red is black'
     page.execute_script("$('form').submit()")
 
