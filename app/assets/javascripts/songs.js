@@ -1,13 +1,13 @@
 function submitSong(event) {
   event.preventDefault();
-  event.stopImmediatePropagation();
-  createSong($("#song_name").val(), $("#song_artist_id").val());
+  let songName = $("#song_name").val();
+  let artistId = $("#song_artist_id").val();
+  createSong(songName, artistId);
   $("#song_name").val(null);
 }
 
 function createSong(name, artist_id){
 
-  let artistId = $("#song_artist_id").val();
   let newSong = {name: name};
 
   $.ajax({
@@ -21,14 +21,13 @@ function createSong(name, artist_id){
   })
 
   .done(function(data){
-    $("#song_id").val(null);
+    console.log(data);
 
     let songId = data.id;
 
 
     let button = $('<button type="button"></button>')
-    .attr('value', songId)
-    .attr('id', songId)
+    .val(songId)
     .bind("click", deleteSong)
     .html('Delete');
 
@@ -42,11 +41,11 @@ function createSong(name, artist_id){
 
 
   })
-  .fail(function(error) {
-    console.log(error)
-    error_message = error.responseJSON.name[0];
-    showError(error_message);
-  });
+  // .fail(function(error) {
+  //   console.log(error)
+  //   error_message = error.responseJSON.name[0];
+  //   showError(error_message);
+  // });
 }
 
 
@@ -77,10 +76,8 @@ function deleteAll(){
 function deleteSong(){
   event.preventDefault();
 
-  alert('passei');
   let artist_id = $("#song_artist_id").val();
   let song_id = $(this).val();
-  let songId = $(this).val();
 
   $.ajax({
     type: "DELETE",
@@ -90,7 +87,7 @@ function deleteSong(){
   })
 
   .done(function(data){
-    $('li[data-id="'+songId+'"]').remove();
+    $(`#${song_id}`).remove();
 
   });
 }
