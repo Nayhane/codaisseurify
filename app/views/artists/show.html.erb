@@ -18,10 +18,9 @@
     <% @artist.songs.each do |song| %>
 
     <li><%= song.name %> &nbsp;
-      <button id="button" onClick="destroySong(); return false">Delete</button>
-      <!-- <%= link_to("Delete", artist_song_path(@artist.id, song.id), method: :delete, data: { confirm: "Are you sure?" }) %></li> -->
+      <button id="button" value="id_song" onClick="destroySong(); return false">Delete</button>
+    </li>
     <% end %>
-  id
 </div>
 
 <br><br>
