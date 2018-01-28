@@ -10,7 +10,7 @@ function submitSong(event) {
 function createSong(name, artist_id){
 
   let newSong = {name: name};
-
+   
 
   $.ajax({
     type: "POST",
@@ -59,7 +59,7 @@ function deleteAll(event){
   let song_id = $(this).val();
   let songId = $(this).val();
 
-  
+
   $.ajax({
     type: "DELETE",
     url: "/api/artists/" + artist_id + "/songs/" + song_id + ".json",
