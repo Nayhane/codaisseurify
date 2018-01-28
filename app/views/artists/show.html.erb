@@ -18,11 +18,13 @@
     <% @artist.songs.each do |song| %>
 
     <li><%= song.name %> &nbsp;
-      <button id="button" value="id_song" onClick="destroySong(); return false">Delete</button>
+      <button class="button" value="<%=song.id %>" onClick="deleteSong;">Delete</button>
     </li>
     <% end %>
 </div>
-
+  <div>
+    <button class="delete_all"  onClick="deleteAll;">Delete All Songs</button>
+  </div>
 <br><br>
   <p> Add a new Song</p>
 
@@ -32,7 +34,7 @@
   <div class="form-group">
     <label>Song name:</label>
     <%= f.text_field :name, class: "form-control" %>
-    <%= f.hidden_field :artist_id %>
+    <input type="hidden" id="song_artist_id" value="<%= @artist.id %>" />
   </div>
 
   <div class="actions">
