@@ -26,6 +26,10 @@ class Api::SongsController < Api::BaseController
     }.to_json
   end
 
+  def delete_all
+    @artist.songs.destroy_all
+  end
+
 
 private
 

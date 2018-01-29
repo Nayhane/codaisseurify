@@ -17,13 +17,13 @@
   <ul id="song_list">
     <% @artist.songs.each do |song| %>
 
-    <li><%= song.name %> &nbsp;
-      <button type="button" value="<%= song.id %>" onclick="deleteSong;">Delete</button>
+    <li id="<%= song.id %>"><%= song.name %> &nbsp;
+      <button type="button" value="<%= song.id %>" class="delete">Delete</button>
     </li>
     <% end %>
 </div>
   <div>
-    <button class="delete_all"  onClick="deleteAll;">Delete All Songs</button>
+    <button id="delete-all">Delete All Songs</button>
   </div>
 <br><br>
   <p> Add a new Song</p>

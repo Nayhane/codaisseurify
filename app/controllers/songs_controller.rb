@@ -23,6 +23,8 @@ class SongsController < ApplicationController
     redirect_to @artist
   end
 
+  
+
 
 private
 
